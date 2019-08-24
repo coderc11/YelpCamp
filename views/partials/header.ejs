@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>YelpCamp</title>
+  </head>
+  <body>
+	  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="/campgrounds">YelpCamp</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<% if(!currentUser){ %>
+				<li class="nav-item active">
+					<a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/register">Sign Up</a>
+				</li>
+			<% } else { %>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Signed In As <%= currentUser.username %></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/logout">Logout</a>
+				</li>
+			<% } %>
+		</ul>
+		<form action="/campgrounds" method="GET" class="form-inline my-2 my-lg-0">
+			<div class="form-group">
+				<input class="form-control mr-sm-2" name="search" type="text" placeholder="Find Your Campground" aria-label="Search">
+		  		<input class="btn btn-outline-success my-2 my-sm-0" value="Search" type="submit"></input>
+			</div>
+		</form>
+	  </div>
+	</nav>
+
+	<div class='container'>
+		<% if(error && error.length > 0){ %>
+			<div class="alert alert-danger mt-3" role="alert">
+				<%= error %>
+			</div>  
+		<% } %>
+		
+		<% if(success && success.length > 0){ %>
+			<div class="alert alert-success mt-3" role="alert">
+				<%= success %>
+			</div>	  
+		<% } %>
+	</div>

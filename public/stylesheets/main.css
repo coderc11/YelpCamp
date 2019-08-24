@@ -1,0 +1,8 @@
+.stylized {
+	margin: 1.5rem auto; 
+	width: 65%;
+}
+
+.delete-form {
+	display: inline-block;
+}

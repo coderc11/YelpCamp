@@ -1,0 +1,52 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<!-- Functions essentilly the same as a div but has semantic meaning being called a header rather than just a div-->
+	<header class="jumbotron mt-3">
+		<div class="container">
+			<h1>
+			Welcome To YelpCamp!
+			</h1>
+			<p>
+				View our hand-picked Campgrounds from around the globe.
+			</p>
+			<p>
+				<a class="btn btn-info btn-lg" href="/campgrounds/new">Add New Campgrounds</a>
+			</p>
+		</div>
+	</header>
+	
+	<p>
+		<h4>
+			Our Most Popular Campgrounds!
+		</h4>
+	</p>
+	
+	
+	<div class="row" style="d-flex justify-content-around">
+		<% campgrounds.forEach(function(campground){ %>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+				<!-- Divered here to use Bootstrap 4 rather than 3 -->
+				<!-- <div class="card" style="width: 18rem;">
+					<img src="<%= campground.image %>">
+				</div>
+				<h4><%= campground.name %></h4> -->
+				<!-- Bootstrap 4 Card -->
+				<div class="card">
+				  <img src="<%= campground.image %>" class="card-img-top" alt="...">
+				  <div class="card-body">
+					<h5 class="card-title text-center"><%= campground.name %></h5>
+					<!-- <p class="card-text"> -->
+					<p class='text-center'>
+						<a href="/campgrounds/<%= campground._id %>" class="btn btn-info">
+							Campground Info
+						</a>
+					</p>
+				  </div>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+</div>
+
+<% include ../partials/footer %>
