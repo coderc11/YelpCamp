@@ -23,7 +23,12 @@ let commentsRoutes      = require('./routes/comments'),
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useCreateIndex', true);
 mongoose.set("useFindAndModify", false);
-mongoose.connect('mongodb://localhost/yelp_camp');
+
+// DEV DATABASE CONNECTION
+// mongoose.connect('mongodb://localhost/yelp_camp');
+
+// LIVE DATABASE CONNECTION
+mongoose.connect('mongodb+srv://coder11:9911121288cfr@cluster0-hnahi.mongodb.net/test?retryWrites=true&w=majority');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
